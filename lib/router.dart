@@ -7,7 +7,7 @@ import 'package:njoytv/drawer/platformservice.dart';
 import 'package:njoytv/drawer/prayer.dart';
 import 'package:njoytv/drawer/satelite.dart';
 import 'package:njoytv/home/home.dart';
-import 'package:njoytv/players/better_player.dart';
+//import 'package:njoytv/players/better_player.dart';
 import 'package:njoytv/players/radio_player2.dart';
 import 'package:njoytv/players/video_player.dart';
 import 'package:njoytv/players/youtube_player.dart';
@@ -43,12 +43,12 @@ class AppRouter {
             builder: (_) => VideoPlayerPage(
                   record: args,
                 ));
-      case TV_ROUTE1:
-        video args = settings.arguments as video;
-        return MaterialPageRoute(
-            builder: (_) => BetterPlayerPage(
-                  record: args,
-                ));
+      // case TV_ROUTE1:
+      //   video args = settings.arguments as video;
+      //   return MaterialPageRoute(
+      //       builder: (_) => BetterPlayerPage(
+      //             record: args,
+      //           ));
       case RADIO_ROUTE:
         video args = settings.arguments as video;
         return MaterialPageRoute(

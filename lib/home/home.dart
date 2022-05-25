@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
             centerTitle: true,
             collapseMode: CollapseMode.parallax,
             background: Padding(
-              padding: EdgeInsets.only(top: 60),
+              padding: EdgeInsets.only(top: 20),
               child: Image.asset(
                 "assets/homelogo.png",
               ),

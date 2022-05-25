@@ -46,7 +46,6 @@ dependencies:
   youtube_player_flutter: ^8.1.0
   video_player: ^2.2.18
   radio_player: ^0.4.3
-  better_player: ^0.0.81
   assets_audio_player: ^3.0.4+3
   path_provider: ^2.0.9
   provider: ^6.0.2
