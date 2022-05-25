@@ -27,26 +27,20 @@ class ContactPage extends StatelessWidget {
         ),
         SizedBox(height: 1),
         Text(
-          'Time Channel Communications Pvt Ltd',
+          'NJOY TV',
           style: TextStyle(
             color: Colors.grey[600],
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          'Neelima Building, 2nd Floor, 61/2574 A10',
+          '6000 Live Oak Parkway',
           style: TextStyle(
             color: Colors.grey[600],
           ),
         ),
         Text(
-          'Alapatt Cross Road,Kochi, Pin-682016',
-          style: TextStyle(
-            color: Colors.grey[600],
-          ),
-        ),
-        Text(
-          'Kerala, India',
+          'Suite 116, Norcross, GA 30093 USA',
           style: TextStyle(
             color: Colors.grey[600],
           ),
@@ -56,11 +50,11 @@ class ContactPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 30, right: 30),
           child: GestureDetector(
             onTap: () {
-              launch_tel('tel:+914842406240');
+              launch_tel('tel:+1-678-283-3636');
             },
             child: ListTile(
               leading: Icon(Icons.phone),
-              title: Text('+91 484 2406240'),
+              title: Text('+1-678-2833-636'),
               tileColor: Colors.blue,
             ),
           ),
@@ -70,25 +64,11 @@ class ContactPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 30, right: 30),
           child: GestureDetector(
             onTap: () {
-              launch_tel('tel:+919778702654');
-            },
-            child: ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('+91 9778702654'),
-              tileColor: Colors.blue,
-            ),
-          ),
-        ),
-        SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30),
-          child: GestureDetector(
-            onTap: () {
-              launch_email('mailto:info@timetv.in');
+              launch_email('mailto:jj@joytvn.com');
             },
             child: ListTile(
               leading: Icon(Icons.email),
-              title: Text('info@tiemtv.in'),
+              title: Text('jj@joytvn.com'),
               tileColor: Colors.blue,
             ),
           ),
@@ -98,11 +78,11 @@ class ContactPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 30, right: 30),
           child: GestureDetector(
             onTap: () {
-              launch_site('https://www.timeiptv.in');
+              launch_site('hhttps://joytvn.com/');
             },
             child: ListTile(
               leading: Icon(Icons.web),
-              title: Text('www.timeiptv.in'),
+              title: Text('www.joytvn.com/'),
               tileColor: Colors.blue,
             ),
           ),

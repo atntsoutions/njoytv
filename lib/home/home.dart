@@ -21,21 +21,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   VideoController _video_controller = new VideoController();
   late Future<bool> _checkServer;
-  int _selectedIndex = 0;
+
   String streamType = "LIVE-TV";
   bool isDarkMode = false;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-
-      streamType = index == 0
-          ? "LIVE-TV"
-          : index == 1
-              ? "LIVE-RADIO"
-              : "YOUTUBE";
-    });
-  }
 
   @override
   void initState() {
@@ -64,25 +52,21 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
+/*       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[900],
         onTap: _onItemTapped,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.tv),
-            label: 'Live TV',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.radio),
-            label: 'Live Radio',
+            label: 'Live TV1',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.youtube_searched_for),
             label: 'VOD',
           ),
         ],
-      ),
+      ), */
     );
   }
 
@@ -105,14 +89,15 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
 
           flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              collapseMode: CollapseMode.parallax,
-              background: Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Image.asset(
-                  "assets/homelogo.png",
-                ),
-              )),
+            centerTitle: true,
+            collapseMode: CollapseMode.parallax,
+            background: Padding(
+              padding: EdgeInsets.only(top: 50),
+              child: Image.asset(
+                "assets/homelogo.png",
+              ),
+            ),
+          ),
           //backgroundColor: AppColor.Page_Title_Background,
           //foregroundColor: AppColor.Page_Title_Color,
           centerTitle: false,
