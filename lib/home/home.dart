@@ -118,7 +118,9 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         showThemeList(),
+
         showVideos(),
+
         //showSilverSizedBox(3),
       ],
     );
