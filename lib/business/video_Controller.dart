@@ -15,12 +15,14 @@ class VideoController {
   Future<bool> CheckServer() async {
     try {
       List<video> mList = [];
+
       bool bOk = await videoRepository.IsDataOK();
       if (bOk) {
         print('Loading Local Data');
         mList = await videoRepository.GetList('LOCAL');
         if (mList.length == 0) bOk = false;
       }
+      //bOk = false;
       if (!bOk) {
         print('Loading Server Data');
         mList = await videoRepository.GetList('REMOTE');

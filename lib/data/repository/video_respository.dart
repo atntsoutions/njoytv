@@ -41,21 +41,28 @@ class VideoRepository extends iVideoRepository {
   }
 
   Future<bool> IsDataOK() async {
-    final _version = await videoLocalService.ReadVersion('VERSION');
-    final _data = await videoRemoteService.ReadVersion();
+    try {
+      final _version = await videoLocalService.ReadVersion('VERSION');
+      final _data = await videoRemoteService.ReadVersion();
 
-    _local_version = _version;
-    _remote_version = _data["version"];
+      _local_version = _version;
+      if (_data == null)
+        _remote_version = 1;
+      else
+        _remote_version = _data["version"];
 
-    if (_remote_version > 0) Singleton.Version = _remote_version;
+      if (_remote_version > 0) Singleton.Version = _remote_version;
 
-    print('Local Version ${_local_version}');
-    print('Remote Version ${_remote_version}');
+      print('Local Version ${_local_version}');
+      print('Remote Version ${_remote_version}');
 
-    if (_local_version < _remote_version)
+      if (_local_version < _remote_version)
+        return false;
+      else
+        return true;
+    } catch (e) {
       return false;
-    else
-      return true;
+    }
   }
 
   Future<bool> Save() async {
