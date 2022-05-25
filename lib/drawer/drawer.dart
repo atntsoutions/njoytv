@@ -29,16 +29,15 @@ class ListPage extends StatelessWidget {
             height: 100,
           ),
         ),
-
         Divider(height: 1, color: Colors.grey),
-        // ListTile(
-        //   leading: Icon(Icons.contact_page, color: AppColor.Drawer_Icon_Color),
-        //   title: Text('About Us', style: Theme.of(context).textTheme.subtitle1),
-        //   onTap: () {
-        //     closeDrawer(context);
-        //     Navigator.pushNamed(context, ABOUTUS_ROUTE);
-        //   },
-        // ),
+        ListTile(
+          leading: Icon(Icons.contact_page, color: AppColor.Drawer_Icon_Color),
+          title: Text('About Us', style: Theme.of(context).textTheme.subtitle1),
+          onTap: () {
+            closeDrawer(context);
+            Navigator.pushNamed(context, ABOUTUS_ROUTE);
+          },
+        ),
         ListTile(
           leading: Icon(Icons.contact_page, color: AppColor.Drawer_Icon_Color),
           title:

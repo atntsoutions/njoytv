@@ -54,7 +54,7 @@ class ContactPage extends StatelessWidget {
             },
             child: ListTile(
               leading: Icon(Icons.phone),
-              title: Text('+1-678-2833-636'),
+              title: Text('+1-678-283-3636'),
               tileColor: Colors.blue,
             ),
           ),

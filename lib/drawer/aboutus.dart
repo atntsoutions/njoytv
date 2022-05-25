@@ -24,12 +24,27 @@ class AboutusPage extends StatelessWidget {
         ),
       ),
       SizedBox(height: 5),
+      //showHeading(),
+      //SizedBox(height: 5),
+      showBody(
+          'NJoy TV Network, the first Indian-owned broadcasting station in the South Eastern United States, with operations in Atlanta, Georgia. Anchored on Channel 21, NJoy TV is a FREE Over the Air TV network spanning throughout the south for viewers to gain the ultimate watching experience, complete with educational programs, news coverage, sporting events, political debates, sitcoms, children’s specials, and so much more! NJoy TV also airs a number of ‘round the clock radio channels in multiple Asian languages.'),
+      SizedBox(height: 10),
+      showBody(
+          'NJoy TV is on the cutting edge of broadcast technology and is available for free downloads via the new apps and on the OTT platform, which will enable a live as well as recorded telecast of each program. NJoy TV continues to be a family-focused station.'),
+      SizedBox(height: 10),
+      showBody(
+          'NJoy TV is a digital cultural melting pot that will open eyes to the larger world around and create an unforgettable viewing experience, all right from the comfort of your living room.'),
+      //SizedBox(height: 5),
+      //showText('A voice of hope for those in despair'),
+      //SizedBox(height: 5),
+      //showText('A beacon of light guiding those in confusion'),
+      //SizedBox(height: 5),
     ]);
   }
 
   showHeading() {
     return Text(
-      'Goodness Television Channel is a devotional Family Channel with God’s own Signature…',
+      'NJOY TV',
       textAlign: TextAlign.center,
       style: TextStyle(
         color: Colors.red[900],
@@ -40,9 +55,9 @@ class AboutusPage extends StatelessWidget {
     );
   }
 
-  showBody() {
+  showBody(String sText) {
     return Text(
-      'This channel has a mission to enrich and empower the families conveying life-giving values of love and goodness. Programs are directed to binding the family in prayer, equipping parents to understand and guide the children and establishing a new generation on the firm foundation of a commitment to truth. Goodness Television telecasts programs in Malayalam and English. The Channel is committed to uphold the values of goodness and truth. We show in the Goodness TV what is needed for our heart’s transformation. ',
+      sText,
       textAlign: TextAlign.justify,
       style: TextStyle(
         color: Colors.cyan[900],
