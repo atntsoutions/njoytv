@@ -16,7 +16,7 @@ class Singleton {
   //static String baseURL_api = "http://10.0.2.2:5000";
 
   static String baseURL_api = "http://app.timeiptv.in";
-  static String baseURL = "http://data.timeiptv.in/resources/TIMEIPTV";
+  static String baseURL = "http://data.timeiptv.in/resources/NJOYTV";
 
   static var primary = Colors.blue;
 
@@ -24,9 +24,9 @@ class Singleton {
 
   static int videoplayer = 0;
 
-  static String App_Company_Code = "TIMEIPTV";
+  static String App_Company_Code = "NJOYTV";
 
-  static String App_Caption = "Time IPTV";
+  static String App_Caption = "NJOY TV";
 
   static int selected_player = 1;
 
