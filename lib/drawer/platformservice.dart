@@ -11,14 +11,20 @@ class PlatFormServicePage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        bottomNavigationBar: TabBar(
-          tabs: [
-            Tab(text: "Cable TV"),
-            Tab(text: "DTH"),
-            Tab(text: "OTT"),
-          ],
+        appBar: AppBar(
+          title: Text('Platform Service',
+              style: Theme.of(context).appBarTheme.titleTextStyle),
+          elevation: 0.0,
+          bottom: TabBar(
+            labelColor: AppColor.TabColor,
+            tabs: [
+              Tab(text: "Cable TV"),
+              Tab(text: "DTH"),
+              Tab(text: "OTT"),
+            ],
+          ),
         ),
-        backgroundColor: AppColor.Page_Body_Background2,
+        //backgroundColor: AppColor.Page_Body_Background2,
         body: TabBarView(
           children: [
             showImages('CABLE'),

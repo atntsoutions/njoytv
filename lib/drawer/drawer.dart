@@ -39,6 +39,15 @@ class ListPage extends StatelessWidget {
           },
         ),
         ListTile(
+          leading: Icon(Icons.settings, color: AppColor.Drawer_Icon_Color),
+          title: Text('Platform Service',
+              style: Theme.of(context).textTheme.subtitle1),
+          onTap: () {
+            closeDrawer(context);
+            Navigator.pushNamed(context, PLATFORMSERVICE_ROUTE);
+          },
+        ),
+        ListTile(
           leading: Icon(Icons.contact_page, color: AppColor.Drawer_Icon_Color),
           title:
               Text('Contact Us', style: Theme.of(context).textTheme.subtitle1),

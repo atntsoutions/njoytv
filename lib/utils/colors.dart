@@ -24,6 +24,8 @@ class AppColor {
 
   static Color Main_List_Card_Background = Colors.white;
 
+  static Color TabColor = Colors.black;
+
   static DefaultScheme() {
     Page_Title_Background = Colors.red;
     Page_Title_Color = Colors.white;
@@ -46,6 +48,8 @@ class AppColor {
     Divider_Color2 = Colors.red;
 
     Main_List_Card_Background = Colors.white;
+
+    TabColor = Colors.black;
   }
 
   static DarkTheme() {
@@ -70,5 +74,7 @@ class AppColor {
     Divider_Color2 = Colors.white;
 
     Main_List_Card_Background = Colors.transparent;
+
+    TabColor = Colors.white;
   }
 }

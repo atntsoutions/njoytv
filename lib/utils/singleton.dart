@@ -51,12 +51,14 @@ class Singleton {
     youtTubeFeauredList = [];
     youTubeList = [];
     socialList = [];
+    platformList = [];
 
     mList.forEach((element) {
       if (element.type == "THEME") themeList.add(element);
       if (element.type == "LIVE-TV") liveStreamingList.add(element);
       if (element.type == "LIVE-RADIO") liveRadioList.add(element);
       if (element.type == "YOUTUBE") youTubeList.add(element);
+      if (element.type == "PLATFORM") platformList.add(element);
     });
   }
 
