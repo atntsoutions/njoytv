@@ -52,21 +52,6 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-/*       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[900],
-        onTap: _onItemTapped,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.tv),
-            label: 'Live TV1',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.youtube_searched_for),
-            label: 'VOD',
-          ),
-        ],
-      ), */
     );
   }
 
@@ -117,11 +102,25 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+
         showThemeList(),
+        // horizontal scrolling icons
+        //showVideos(),
 
-        showVideos(),
-
-        //showSilverSizedBox(3),
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: Singleton.getGroupList(getList()).map((e) {
+                    return showWidget(e);
+                  }).toList(),
+                ),
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> {
     return SliverList(
       delegate: SliverChildListDelegate(
         [
-          SizedBox(height: 3),
+          SizedBox(height: 2),
           showTheme(),
         ],
       ),
@@ -169,7 +168,42 @@ class _HomePageState extends State<HomePage> {
 
   showVideos() {
     return SliverList(
-      delegate: SliverChildListDelegate(showStreaming()),
+      delegate: SliverChildListDelegate(
+        showStreaming(),
+      ),
+    );
+  }
+
+  Widget showWidget(String grp) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ShowCaption(grp),
+        showMainList(grp),
+      ],
+    );
+  }
+
+  showMainList(String grp) {
+    return GridView(
+      padding: EdgeInsets.all(0),
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 1,
+      ),
+      children: Singleton.getSubList(getList(), grp).map(
+        (item) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, TV_ROUTE, arguments: item);
+            },
+            child: showCard(item.group, item.url,
+                '${Singleton.baseURL}/${item.type}/${item.logo}'),
+          );
+        },
+      ).toList(),
     );
   }
 
@@ -193,6 +227,46 @@ class _HomePageState extends State<HomePage> {
     return Items;
   }
 
+  SliverGrid showList(String grp, int ctr) {
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+      ),
+      delegate: SliverChildListDelegate(
+        Singleton.getSubList(getList(), grp).map((item) {
+          return GestureDetector(
+            onTap: () {
+              print(item.url);
+              Navigator.pushNamed(context, YOUTUBE_ROUTE, arguments: item.url);
+            },
+            child: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Card(
+                  margin: EdgeInsets.all(1),
+                  color: AppColor.HomePage_Featued_Card_Background,
+                  elevation: 1.0,
+                  child: CachedNetworkImage(
+                    imageUrl: '${Singleton.baseURL}/${item.type}/${item.logo}',
+                    fit: BoxFit.fill,
+                    placeholder: (context, url) {
+                      return SizedBox(
+                        width: 10,
+                        height: 10,
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    },
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
   showVideoList(String grp, int ctr) {
     return Container(
       padding: EdgeInsets.all(1),
@@ -209,32 +283,32 @@ class _HomePageState extends State<HomePage> {
           items: Singleton.getSubList(getList(), grp).map(
             (item) {
               return GestureDetector(
-                  onTap: () {
-                    try {
-                      if (item.type == "LIVE-TV") {
-                        if (Singleton.videoplayer == 0)
-                          Navigator.pushNamed(context, TV_ROUTE,
-                              arguments: item);
-                        if (Singleton.videoplayer == 1)
-                          Navigator.pushNamed(context, TV_ROUTE1,
-                              arguments: item);
-                      } else if (item.type == "LIVE-RADIO") {
-                        Navigator.pushNamed(context, RADIO_ROUTE,
+                onTap: () {
+                  try {
+                    if (item.type == "LIVE-TV") {
+                      if (Singleton.videoplayer == 0)
+                        Navigator.pushNamed(context, TV_ROUTE, arguments: item);
+                      if (Singleton.videoplayer == 1)
+                        Navigator.pushNamed(context, TV_ROUTE1,
                             arguments: item);
-                      } else if (item.type == "YOUTUBE") {
-                        Navigator.pushNamed(context, YOUTUBE_ROUTE,
-                            arguments: item);
-                      }
-                    } catch (e) {
-                      print(e);
+                    } else if (item.type == "LIVE-RADIO") {
+                      Navigator.pushNamed(context, RADIO_ROUTE,
+                          arguments: item);
+                    } else if (item.type == "YOUTUBE") {
+                      Navigator.pushNamed(context, YOUTUBE_ROUTE,
+                          arguments: item);
                     }
-                  },
-                  child: showCard(
-                      item.group,
-                      item.url,
-                      item.type == "YOUTUBE"
-                          ? "https://img.youtube.com/vi/${item.url}/0.jpg"
-                          : '${Singleton.baseURL}/${item.type}/${item.logo}'));
+                  } catch (e) {
+                    print(e);
+                  }
+                },
+                child: showCard(
+                    item.group,
+                    item.url,
+                    item.type == "YOUTUBE"
+                        ? "https://img.youtube.com/vi/${item.url}/0.jpg"
+                        : '${Singleton.baseURL}/${item.type}/${item.logo}'),
+              );
             },
           ).toList(),
         ),
