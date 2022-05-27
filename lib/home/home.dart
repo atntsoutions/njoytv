@@ -186,12 +186,12 @@ class _HomePageState extends State<HomePage> {
 
   showMainList(String grp) {
     return GridView(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.all(1),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 1,
+        crossAxisCount: 4,
+        crossAxisSpacing: 2,
       ),
       children: Singleton.getSubList(getList(), grp).map(
         (item) {
@@ -318,16 +318,17 @@ class _HomePageState extends State<HomePage> {
 
   showCard(String stype, String url, String fileName) {
     return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      elevation: 3.0,
+      elevation: 10.0,
       child: CachedNetworkImage(
         imageUrl: "${fileName}",
-        fit: BoxFit.fill,
         alignment: Alignment.center,
+        fit: BoxFit.fill,
+        height: 70,
+        width: 70,
         placeholder: (context, url) {
           return SizedBox(
-            width: 100,
-            height: 100,
+            width: 10,
+            height: 10,
             child: Center(child: CircularProgressIndicator()),
           );
         },
